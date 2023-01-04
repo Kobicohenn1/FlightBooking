@@ -1,4 +1,4 @@
-﻿@model FlightBooking.Models.Login;
+﻿@model FlightBooking.Models.User;
 @{
     Layout = null;
 }
@@ -11,7 +11,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form asp-controller="Access" asp-action="Login" method="post">
+    <form asp-controller="Access" asp-action="User" method="post">
         <h1>Login</h1>
         <input type ="email" placeholder="Email" asp-for="Email" />
         <input type="password" placeholder="Password" asp-for="Password" />

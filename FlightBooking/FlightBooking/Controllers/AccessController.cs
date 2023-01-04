@@ -10,7 +10,7 @@ namespace FlightBooking.Controllers
 {
     public class AccessController : Controller
     {
-        public IActionResult Login()
+        public IActionResult User()
         {
             ClaimsPrincipal claimUser = HttpContext.User;
 
@@ -21,13 +21,13 @@ namespace FlightBooking.Controllers
         }
 
         [HttpPost]
-        public async Task <IActionResult> Login(Login modelLogin)
+        public async Task <IActionResult> User(User modelUser)
         {
-            if (modelLogin.Email == "user@example.com" && modelLogin.Password == "123") 
+            if (modelUser.Email == "user@example.com" && modelUser.Password == "123") 
             {
                 List<Claim> claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier,modelLogin.Email),
+                    new Claim(ClaimTypes.NameIdentifier,modelUser.Email),
                     new Claim("OtherProperties","Example Role")
                 };
 
@@ -35,7 +35,7 @@ namespace FlightBooking.Controllers
                 AuthenticationProperties properties = new AuthenticationProperties()
                 {
                     AllowRefresh= true,
-                    IsPersistent = modelLogin.KeepLoggedIn
+                    IsPersistent = modelUser.KeepLoggedIn
                 };
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),properties);

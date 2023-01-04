@@ -9,7 +9,7 @@ builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
     {
-        option.LoginPath = "/Access/Login";
+        option.LoginPath = "/Access/User";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     });
 
@@ -34,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Access}/{action=Login}/{id?}");
+    pattern: "{controller=Access}/{action=User}/{id?}");
 
 app.Run();
