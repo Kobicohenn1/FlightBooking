@@ -13,7 +13,7 @@ namespace FlightBooking.Controllers
         public IActionResult User()
         {
             ClaimsPrincipal claimUser = HttpContext.User;
-
+   
             if(claimUser.Identity.IsAuthenticated)
                 return RedirectToAction ("Index", "Home");
 
